@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
  *
  * Spring Boot application starter class  
  */
+//@ComponentScan(basePackages = {"br.com.springboot_JDEV_Curso.repository"})
 @EntityScan(basePackages = "br.com.springboot_JDEV_Curso.model")
 @SpringBootApplication
 public class Application {
