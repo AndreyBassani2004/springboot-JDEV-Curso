@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.springboot.springboot_JDEV_Curso.Repository.UsuarioRepository;
 import br.com.springboot_JDEV_Curso.model.Usuario;
-import br.com.springboot_JDEV_Curso.repository.UsuarioRepository;
+
 
 /**
  *
@@ -19,7 +20,7 @@ import br.com.springboot_JDEV_Curso.repository.UsuarioRepository;
 public class GreetingsController {
 	
 	
-	@Autowired //Injeçao de dependencia
+	@Autowired /* IC/CD ou CDI - Injeção de dependencia */
 	private UsuarioRepository usuarioRepository;
     /**
      *
@@ -33,15 +34,15 @@ public class GreetingsController {
     }
     
     
-    @RequestMapping(value= "/olamundo/{nome}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.OK)
-    public String retornaOlaMundo(@PathVariable String nome) {
-    	
-    	Usuario usuario = new Usuario();
-    	usuario.setNome(nome);
-   
-    	usuarioRepository.save(usuario);//Gravar no banco de dados
-    	
-    	return "Ola mundo " + nome;
-    }
+    @RequestMapping(value = "/olamundo/{nome}", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public String retornaOlaMundo(@PathVariable String nome) {
+
+		Usuario usuario = new Usuario();
+		usuario.setNome(nome);
+
+		usuarioRepository.save(usuario);/* grava no banco de dados */
+
+		return "Ola mundo " + nome;
+	}
 }
